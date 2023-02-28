@@ -13,9 +13,12 @@ func main() {
 	}
 	wechatEnv := config.GetWechat()
 	telegramEnv := config.GetTelegram()
+	qqEnv := config.GetQQ()
 	if wechatEnv != nil && *wechatEnv == "true" {
 		bootstrap.StartWebChat()
 	} else if telegramEnv != nil {
 		bootstrap.StartTelegramBot()
+	} else if qqEnv != nil {
+		bootstrap.StartQQChat()
 	}
 }

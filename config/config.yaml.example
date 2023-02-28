@@ -5,3 +5,7 @@ chatgpt:
   #telegram: your telegram token
   #tgWhitelist: username1,username2
   #tgKeyword: chatgpt
+  qq: "true"
+  qq_uin: 12312412
+  qq_password: "abcd111sda"
+  qq_keyword: xiaobai
