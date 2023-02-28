@@ -20,6 +20,10 @@ type ChatGptConfig struct {
 	Telegram      *string `json:"telegram"         mapstructure:"telegram"         yaml:"telegram"`
 	TgWhitelist   *string `json:"tg_whitelist"     mapstructure:"tg_whitelist"     yaml:"tg_whitelist"`
 	TgKeyword     *string `json:"tg_keyword"       mapstructure:"tg_keyword"       yaml:"tg_keyword"`
+	QQ            *string `json:"qq"               mapstructure:"qq"               yaml:"qq"`
+	QQUin         *string `json:"qq_uin"           mapstructure:"qq_uin"           yaml:"qq_uin"`
+	QQPassword    *string `json:"qq_password"      mapstructure:"qq_password"      yaml:"qq_password"`
+	QQKeyword     *string `json:"qq_keyword"       mapstructure:"qq_keyword"       yaml:"qq_keyword"`
 }
 
 func LoadConfig() error {
@@ -109,6 +113,61 @@ func GetTelegramWhitelist() *string {
 		tgWhitelist = config.ChatGpt.TgWhitelist
 	}
 	return tgWhitelist
+}
+func GetQQ() *string {
+	qq := getEnv("qq")
+	if qq != nil {
+		return qq
+	}
+	if config == nil {
+		return nil
+	}
+	if qq == nil {
+		qq = config.ChatGpt.QQ
+	}
+	return qq
+}
+
+func GetQQUin() *string {
+	qqUin := getEnv("qq_uin")
+	if qqUin != nil {
+		return qqUin
+	}
+	if config == nil {
+		return nil
+	}
+	if qqUin == nil {
+		qqUin = config.ChatGpt.QQUin
+	}
+	return qqUin
+}
+
+func GetQQPassword() *string {
+	qqPassword := getEnv("qq_password")
+	if qqPassword != nil {
+		return qqPassword
+	}
+	if config == nil {
+		return nil
+	}
+	if qqPassword == nil {
+		qqPassword = config.ChatGpt.QQPassword
+	}
+	return qqPassword
+}
+
+func GetQQKeyword() *string {
+	qqKeyword := getEnv("qq_keyword")
+	if qqKeyword != nil {
+		return qqKeyword
+	}
+	if config == nil {
+		return nil
+	}
+	if qqKeyword == nil {
+		qqKeyword = config.ChatGpt.QQKeyword
+	}
+	return qqKeyword
 }
 
 func GetOpenAiApiKey() *string {
